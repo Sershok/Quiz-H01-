@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="person" class="com.example.quiz.Person">
+        <property name="firstName" value=""/>
+        <property name="lastName" value=""/>
+    </bean>
+
+    <bean id="quiz" class="com.example.quiz.QuizResource" >
+        <property name="quizPathResource" value="quiz.csv"/>
+        <property name="answerPathResource" value="answer.csv"/>
+    </bean>
+
+    <bean id="quizView" class="com.example.quiz.QuizView">
+        <property name="quizModel" ref="quizModel"/>
+        <property name="person" ref="person"/>
+    </bean>
+
+    <bean  id="quizModel" class="com.example.quiz.QuizModel">
+        <property name="quiz" ref="quiz"/>
+        <property name="quizView" ref="quizView"/>
+    </bean>
+
+<bean id="quizController" class="com.example.quiz.QuizController">
+    <property name="quizModel" ref="quizModel"/>
+    <property name="quizView" ref="quizView"/>
+</bean>
+
+
+</beans>

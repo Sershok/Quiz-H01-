@@ -21,16 +21,16 @@ public class Validator {
 
         while (!scanner.hasNextInt()) {
             String str = scanner.nextLine().trim();
-            System.out.printf(Constants.NAN_QUANTITY_MSG, str);
+            System.out.printf(Constants.NAN_NUMBER_MSG, str);
         }
         number = scanner.nextInt();
         while (number <= 0) {
-            System.out.println(Constants.INCORRECT_QUANTITY_MSG);
+            System.out.println(Constants.INCORRECT_NUMBER_MSG);
             while (!scanner.hasNextInt()) {
                 try {
                     str1 = scanner.next().trim();
                 } catch (InputMismatchException ime) {
-                    System.out.printf(Constants.NAN_QUANTITY_MSG, str1);
+                    System.out.printf(Constants.NAN_NUMBER_MSG, str1);
                 }
             }
             number = scanner.nextInt();

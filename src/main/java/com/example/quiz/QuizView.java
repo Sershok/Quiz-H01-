@@ -12,8 +12,6 @@ public class QuizView {
 
     Scanner sc;
     String title;
-    int cntList = 1;
-    int score = 0;
     private Person person;
 
     private QuizModel quizModel;
@@ -41,12 +39,14 @@ public class QuizView {
 
     public void start(List<String> list, List<String> answerList) {
         inputName();
+        int cntList = 1;
+        int score = 0;
 
         for (int i = 0; i < list.size(); i++) {
 
-            list
-                    .stream()
-                    .filter(str -> str.startsWith(String.valueOf(cntList)))
+            int finalCntList = cntList;
+            list.stream()
+                    .filter(str -> str.startsWith(String.valueOf(finalCntList)))
                     .forEach(System.out::println);
 
             if (answerList.contains(cntList + " - " + inputAnswer())) {
@@ -57,17 +57,17 @@ public class QuizView {
 
             cntList++;
         }
-        showRes();
+        showRes(score);
     }
 
-    public String inputAnswer() {
+    public int inputAnswer() {
         sc = new Scanner(System.in);
         title = "Choice answer 1-5";
         System.out.println(title);
-        return Validator.validateSTR(sc);
+        return Validator.validateNumber(sc);
     }
 
-    public void showRes() {
+    public void showRes(int score) {
         String res = "Game over:\n" + person.getFirstName() + " " + person.getLastName()
                 + "\nYour score:\n" + score;
 

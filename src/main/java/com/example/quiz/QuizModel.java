@@ -22,10 +22,9 @@ public class QuizModel {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(quiz.getQuizPathResource().getInputStream()))) {
 
-            String value;
+            String values;
 
-            while ((value = br.readLine()) != null) {
-                String values = value;
+            while ((values = br.readLine()) != null) {
                 quizList.add(values);
             }
         } catch (IOException e) {
@@ -38,9 +37,9 @@ public class QuizModel {
     public List<String> readAnswerResource() {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(quiz.getAnswerPathResource().getInputStream()))) {
-            String value;
-            while ((value = br.readLine()) != null) {
-                answerQuizList.add(value);
+            String values;
+            while ((values = br.readLine()) != null) {
+                answerQuizList.add(values);
             }
 
         } catch (IOException e) {
